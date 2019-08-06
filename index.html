@@ -4,11 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="stylesheet" href="style.css">
     <title>Top trumps</title>
 </head>
 <body>
-    <script src="script.js"></script>
-    
+    <div class="container">
+        <div class="item item1">
+            <h1>Top Trumps</h1>
+        </div>
+        <div class="item item2">
+            <h2 class="player">Player ones deck</h2>
+            <h3 class="person">Name</h3>
+            <form>
+                Intelligence: <input type="radio" name="stats" value="intelligences">
+                <label for="intelligence" class="intelligence">Intelligence</label><br><br>
+                Strength: <input type="radio" name="stats" value="strengths">
+                <label for="strength" class="strength">Strength</label><br><br>
+                Speed: <input type="radio" name="stats" value="speeds">
+                <label for="speed" class="speed">Speed</label><br><br>
+                Durability: <input type="radio" name="stats" value="durabilitys">
+                <label for="durability" class="durability">Durability</label><br><br>
+                Energy Projection: <input type="radio" name="stats" value="energyprojections">
+                <label for="energyProjection" class="energyProjection">Energy Projection</label><br><br>
+                Fighting Skills: <input type="radio" name="stats" value="fightingskills">
+                <label for="fightingSkills" class="fightingSkills">Fighting Skills</label><br><br>
+                <input class="select" type="button" value="Submit">
+            </form>
+            <p class="handsize">15</p>
+            <br>
+        </div>
+        <div class="item item3">
+            <div class="hide">
+                <h2>Opponents Card</h2>
+                <h3 class="person2">name</h3>
+                <p class="intelligence2">Intelligence:</p>
+                <p class="strength2">Strength:</p>
+                <p class="speed2">Speed:</p>
+                <p class="durability2">Durability:</p>
+                <p class="energyProjection2">Energy Projection:</p>
+                <p class="fightingSkills2">Fighting Skills:</p>
+
+                <button class="next">next</button>
+                
+            </div>
+        </div>
+    </div>
+    <h2 class="outcome">woop</h2>
+    <script src="testScript.js"></script>    
 </body>
 </html>
+

@@ -1,3 +1,27 @@
+const intelligences = document.querySelector(".intelligence");
+const strengths = document.querySelector(".strength");
+const person = document.querySelector(".person");
+const speeds = document.querySelector(".speed");
+const durabilitys = document.querySelector(".durability");
+const energyprojections = document.querySelector(".energyProjection");
+const fightingskills = document.querySelector(".fightingSkills");
+const select = document.querySelector(".select");
+const stats = document.forms[0];
+const player = document.querySelector(".player");
+const intelligences2 = document.querySelector(".intelligence2");
+const strengths2 = document.querySelector(".strength2");
+const person2 = document.querySelector(".person2");
+const speeds2 = document.querySelector(".speed2");
+const durabilitys2 = document.querySelector(".durability2");
+const energyprojections2 = document.querySelector(".energyProjection2");
+const fightingskills2 = document.querySelector(".fightingSkills2");
+const next = document.querySelector(".next");
+const hide = document.querySelector(".hide");
+const outcome = document.querySelector(".outcome");
+const handsize = document.querySelector(".handsize")
+
+hide.style.display = "none"
+
 class Card{
     constructor(name,  intelligence, strength, speed, durability, energyProjection, fightingSkills){
         this._name = name;
@@ -69,7 +93,7 @@ function shuffle(array) {
       let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
       [array[i], array[j]] = [array[j], array[i]]; // swap elements
     }
-  }
+}
 
 let characters = [iceman, toad, magneto, deadpool, mystique, rogue, juggernaut, apocalypse, shadowKing, profX, wolverine, cyclops, phoenix, nightcrawler, colossus, storm, jubilee, emmaFrost, angel, beast, havok, quicksilver, banshee, sunfire, shadowcat, psylocke, dazzler, gambit, bishop, sabretooth]
 let drawPile = []
@@ -80,129 +104,122 @@ let playerOneHand = characters.slice(0,15)
 let playerTwoHand = characters.slice(15,31)
 let currentPlayer = playerOneHand
 let currentPlayerName ="Player 1"
+let opponentPlayer = playerTwoHand
 
+intelligences.textContent = playerOneHand[0].intelligence;
+strengths.textContent = playerOneHand[0].strength;
+person.textContent = playerOneHand[0].name;
+speeds.textContent = playerOneHand[0].speed;
+durabilitys.textContent = playerOneHand[0].durability;
+energyprojections.textContent = playerOneHand[0].energyProjection;
+fightingskills.textContent = playerOneHand[0].fightingSkills;
+player.textContent = currentPlayerName;
 
-// const choose = () => {
-// let userInput = prompt(`Your card is ${playerOneHand[0].name}. Please choose your stat:\n1. Intelligence: ${playerOneHand[0].intelligence}\n2. Strength: ${playerOneHand[0].strength}\n3. Speed: ${playerOneHand[0].speed}\n4. Durability: ${playerOneHand[0].durability}\n5. Energy Projection: ${playerOneHand[0].energyProjection}\n6. Fighting Skills: ${playerOneHand[0].fightingSkills} `)
-// }
-let playerOneStat;
-let playerTwoStat;
+intelligences2.textContent = `Intelligence: ${playerTwoHand[0].intelligence}`;
+strengths2.textContent = `Strength: ${playerTwoHand[0].strength}`;
+person2.textContent = playerTwoHand[0].name;
+speeds2.textContent = `Speed: ${playerTwoHand[0].speed}`;
+durabilitys2.textContent = `Durability: ${playerTwoHand[0].durability}`;
+energyprojections2.textContent = `Energy Projection: ${playerTwoHand[0].energyProjection}`;
+fightingskills2.textContent = `Fighting Skills: ${playerTwoHand[0].fightingSkills}`;
 
+let stat1;
+let stat2;
 
-const outer = () => {
-    // let userInput = prompt(`Your card is ${playerOneHand[0].name}. Please choose your stat:\n1. Intelligence: ${playerOneHand[0].intelligence}\n2. Strength: ${playerOneHand[0].strength}\n3. Speed: ${playerOneHand[0].speed}\n4. Durability: ${playerOneHand[0].durability}\n5. Energy Projection: ${playerOneHand[0].energyProjection}\n6. Fighting Skills: ${playerOneHand[0].fightingSkills} `)
-    const inner = (num) => {
-        if (num == 1){
-            playerOneStat = playerOneHand[0].intelligence
-            playerTwoStat = playerTwoHand[0].intelligence
-        }
-
-        else if (num == 2){
-            playerOneStat = playerOneHand[0].strength
-            playerTwoStat = playerTwoHand[0].strength
-        }
-
-        else if (num == 3){
-            playerOneStat = playerOneHand[0].speed
-            playerTwoStat = playerTwoHand[0].speed
-        }
-        else if (num == 4){
-            playerOneStat = playerOneHand[0].durability
-            playerTwoStat = playerTwoHand[0].durability
-        }
-        else if (num == 5){
-            playerOneStat = playerOneHand[0].energyProjection
-            playerTwoStat = playerTwoHand[0].energyProjection
-        }
-        else if (num == 6){
-            playerOneStat = playerOneHand[0].fightingSkills
-            playerTwoStat = playerTwoHand[0].fightingSkills
+select.addEventListener("click", () => {
+    for (i=0; i<stats.length ;i++){        
+        if (stats[i].checked){
+           if (i == 0 ){
+               stat1 = playerOneHand[0].intelligence;
+               stat2 = playerTwoHand[0].intelligence;
+           }
+           else if (i == 1){
+               stat1 = playerOneHand[0].strength;
+               stat2 = playerTwoHand[0].strength;
+           }
+           else if (i == 2){
+               stat1 = playerOneHand[0].speed;
+               stat2 = playerTwoHand[0].speed;
+           }
+           else if (i == 3){
+               stat1 = playerOneHand[0].durability;
+               stat2 = playerTwoHand[0].durability;
+           }
+           else if (i == 4){
+               stat1 = playerOneHand[0].energyProjection;
+               stat2 = playerTwoHand[0].energyProjection;
+           }
+           else if (i == 5){
+               stat1 = playerOneHand[0].fightingSkills;
+               stat2 = playerTwoHand[0].fightingSkills;
+           }
         }
     }
+    hide.style.display = "block"
+      
+})
 
-    return inner
-}
-const draw = () => {
-   
-let shuffleTwo = playerTwoHand[0]
-let shuffleOne = playerOneHand[0]
+next.addEventListener("click", () => {
+    compare(stat1, stat2)
+}) 
 
-if (playerOneStat > playerTwoStat) {
-    alert(`player one uses ${playerOneHand[0].name} with a power of ${playerOneStat} to beat player two's ${playerTwoHand[0].name} with a power of ${playerTwoStat}`)
-    playerOneHand.push(shuffleOne)
-    playerOneHand.push(shuffleTwo)
-    playerOneHand = playerOneHand.concat(drawPile)
-    drawPile = []
-    currentPlayer = playerOneHand
-    currentPlayerName = "Player 1"
-}
-
-else if  (playerTwoStat > playerOneStat) {
-    alert(`player two uses ${playerTwoHand[0].name} with a power of ${playerTwoStat} to beat player one's ${playerOneHand[0].name} with a power of ${playerOneStat}`)
-    playerTwoHand.push(shuffleOne)
-    playerTwoHand.push(shuffleTwo)
-    playerTwoHand = playerTwoHand.concat(drawPile)
-    drawPile = []
-    currentPlayer = playerTwoHand
-    currentPlayerName = "Player two"
+function compare (playerOneStat, playerTwoStat) {
     
-}
-else if (playerOneStat == playerTwoStat){
-    alert(`Draw. ${playerTwoHand[0].name} has the same value as ${playerOneHand[0].name}`)
-    drawPile.push(shuffleOne)
-    drawPile.push(shuffleTwo)
+    let shuffleTwo = playerTwoHand[0]
+    let shuffleOne = playerOneHand[0]
+    if (playerOneStat > playerTwoStat) {
+        outcome.textContent = `player one uses ${playerOneHand[0].name} with a power of ${playerOneStat} to beat player two's ${playerTwoHand[0].name} with a power of ${playerTwoStat}`
+        playerOneHand.push(shuffleOne)        
+        playerOneHand.push(shuffleTwo)
+        playerOneHand = playerOneHand.concat(drawPile)
+        drawPile = []
+        currentPlayer = playerOneHand
+        currentPlayerName = "Player 1"
+        opponentPlayer = playerTwoHand
+    }
     
-}
-else {
-    alert("broken")
-}
-
-playerOneHand.shift()
-playerTwoHand.shift()
-
-console.log(playerOneHand)
-console.log(playerTwoHand)
-}
-
-
-// let arr = [1, 2, 3]
-// let stat;
-
-// const outer = () => {
-//     let a = 3
-//     const inner = (num) => {
+    else if  (playerTwoStat > playerOneStat) {
+        outcome.textContent = `player two uses ${playerTwoHand[0].name} with a power of ${playerTwoStat} to beat player one's ${playerOneHand[0].name} with a power of ${playerOneStat}`
+        playerTwoHand.push(shuffleOne)
+        playerTwoHand.push(shuffleTwo)
+        playerTwoHand = playerTwoHand.concat(drawPile)
+        drawPile = []
+        currentPlayer = playerTwoHand
+        currentPlayerName = "Player 2"
+        opponentPlayer = playerOneHand
         
-//         if (num == 1){
-//             stat = arr[1]
-//         }
-//     }
-//     return inner
-// }
-
-// let userInput = prompt("1, 2, 3, 4, 5, 6")
-
-// let innerFunction = outer()
-// innerFunction(userInput)
-// let john = 5 + stat
-// alert(john)
-
-
-
-let innerFunction = outer()
-
-const turn = () => {
-    let userInput = prompt(`It is ${currentPlayerName}'s turn. Your card is ${currentPlayer[0].name}. Please choose your stat:\n1. Intelligence: ${currentPlayer[0].intelligence}\n2. Strength: ${currentPlayer[0].strength}\n3. Speed: ${currentPlayer[0].speed}\n4. Durability: ${currentPlayer[0].durability}\n5. Energy Projection: ${currentPlayer[0].energyProjection}\n6. Fighting Skills: ${currentPlayer[0].fightingSkills} `)
-    innerFunction(userInput)
-    draw()
-    if (playerOneHand.length+drawPile.length == 30  && playerTwoHand.length == 0 ){
-        alert("Player one wins!")
     }
-    else if (playerTwoHand.length+drawPile.length == 30  && playerOneHand.length == 0 ){
-        alert("Player Two wins!")
+    else if (playerOneStat == playerTwoStat){
+        outcome.textContent = `Draw. ${playerTwoHand[0].name} has the same value as ${playerOneHand[0].name}`
+        drawPile.push(shuffleOne)
+        drawPile.push(shuffleTwo)
+        
     }
-}
+    else {
+        alert("broken")
+    }
+    playerOneHand.shift()
+    playerTwoHand.shift()
 
+    console.log(playerOneHand)
+    console.log(playerTwoHand)
 
-while (playerOneHand.length < 30 && playerOneHand.length > 0){
-    turn()
+    intelligences.textContent = currentPlayer[0].intelligence;
+    strengths.textContent = currentPlayer[0].strength;
+    person.textContent = currentPlayer[0].name;
+    speeds.textContent = currentPlayer[0].speed;
+    durabilitys.textContent = currentPlayer[0].durability;
+    energyprojections.textContent = currentPlayer[0].energyProjection;
+    fightingskills.textContent = currentPlayer[0].fightingSkills;
+    player.textContent = currentPlayerName;
+
+    intelligences2.textContent = `Intelligence: ${opponentPlayer[0].intelligence}`;
+    strengths2.textContent = `Strength: ${opponentPlayer[0].strength}`;
+    person2.textContent = opponentPlayer[0].name;
+    speeds2.textContent = `Speed: ${opponentPlayer[0].speed}`;
+    durabilitys2.textContent = `Durability: ${opponentPlayer[0].durability}`;
+    energyprojections2.textContent = `Energy Projection: ${opponentPlayer[0].energyProjection}`;
+    fightingskills2.textContent = `Fighting Skills: ${opponentPlayer[0].fightingSkills}`;
+    hide.style.display = "none"
+    handsize.textContent = currentPlayer.length;
 }

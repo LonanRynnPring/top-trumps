@@ -1,0 +1,30 @@
+*{
+    text-align:center;
+}
+
+.container{
+    display:flex;
+    height: 60vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item1{
+    width: 100%;
+}
+
+.item2{
+    width: 20%;
+    border:solid;
+    height:70%;
+    background-color: rgb(161, 107, 233);
+}
+
+.item3{
+    width: 20%;
+    border:solid;
+    height: 70%;
+    background-color: rgb(161, 107, 233);
+}
+
+
