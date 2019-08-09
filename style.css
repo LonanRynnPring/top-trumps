@@ -27,10 +27,12 @@ body{
     background-color: #fe0002;
     /* background-image: url("images/logo.png"); */
     background-size: cover;
+    order: 0;
 }
 
 .item3{
     width:15%;
+    order: 0;
 }
 
 .item4{

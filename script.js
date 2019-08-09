@@ -22,6 +22,8 @@ const handsize = document.querySelector(".handsize")
 const image1 = document.querySelector(".image1");
 const image2 = document.querySelector(".image2");
 const win = document.querySelector(".win");
+const item2 = document.querySelector(".item2");
+const item3 = document.querySelector(".item3");
 
 hide.style.display = "none"
 
@@ -170,7 +172,7 @@ select.addEventListener("click", () => {
 
 next.addEventListener("click", () => {
     check()
-    
+    switch1()
 }) 
 
 function compare (playerOneStat, playerTwoStat) {
@@ -249,5 +251,16 @@ function check () {
     }
     else {
         compare(stat1, stat2)
+    }
+}
+
+function switch1 () {
+    if (currentPlayer == playerOneHand){
+        item2.style.order = 0;
+        item3.style.order = 0;
+    }
+    else if (currentPlayer == playerTwoHand){
+        item2.style.order = 2;
+        item3.style.order = 1;
     }
 }
